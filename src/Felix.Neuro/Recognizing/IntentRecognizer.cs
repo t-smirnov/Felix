@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Felix.Core.Models
+namespace Felix.Neuro.Recognizing
 {
-    public class Intent
+    public class IntentRecognizer
     {
-        public Intent()
+        public IntentRecognizer()
         {
-            
+           
         }
     }
 }
- 

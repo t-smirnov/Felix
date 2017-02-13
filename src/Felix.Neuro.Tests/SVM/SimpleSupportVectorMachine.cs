@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
-namespace Felix.Core.Models
+namespace Felix.Neuro.Tests.SVM
 {
-    public class Intent
+    public class SimpleSupportVectorMachine
     {
-        public Intent()
+        public SimpleSupportVectorMachine()
         {
             
         }
     }
 }
- 

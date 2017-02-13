@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Felix.Core", "Felix.Core\Fe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Felix.WebHooks", "Felix.WebHooks\Felix.WebHooks.csproj", "{54762395-3C77-485C-A842-C7F71B6B2A15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Felix.Neuro", "Felix.Neuro\Felix.Neuro.csproj", "{7721F6D5-531C-4E11-BCAF-3773531DB381}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Felix.Neuro.Tests", "Felix.Neuro.Tests\Felix.Neuro.Tests.csproj", "{B49FB4B9-0825-4E47-9FAF-ADFBAF2029CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{54762395-3C77-485C-A842-C7F71B6B2A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54762395-3C77-485C-A842-C7F71B6B2A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54762395-3C77-485C-A842-C7F71B6B2A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7721F6D5-531C-4E11-BCAF-3773531DB381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7721F6D5-531C-4E11-BCAF-3773531DB381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7721F6D5-531C-4E11-BCAF-3773531DB381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7721F6D5-531C-4E11-BCAF-3773531DB381}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B49FB4B9-0825-4E47-9FAF-ADFBAF2029CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B49FB4B9-0825-4E47-9FAF-ADFBAF2029CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B49FB4B9-0825-4E47-9FAF-ADFBAF2029CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B49FB4B9-0825-4E47-9FAF-ADFBAF2029CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
