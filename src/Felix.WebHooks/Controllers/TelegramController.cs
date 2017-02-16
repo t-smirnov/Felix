@@ -15,12 +15,6 @@ namespace Felix.WebHooks.Controllers
     {
         private ILogger _logger;
 
-
-        public TelegramController()
-        {
-
-        }
-
         public TelegramController(ILogger logger)
         {
             _logger = logger;        
@@ -30,8 +24,9 @@ namespace Felix.WebHooks.Controllers
         [Route("update")]
         public async Task<IHttpActionResult> Post(Update update)
         {
-            _logger?.WriteInformation(JsonConvert.SerializeObject(update));
-            return await Task.FromResult(Ok("I got message"));
+            var serialized = JsonConvert.SerializeObject(update);
+            _logger.WriteInformation(serialized);
+            return await Task.FromResult(Ok($"I got {serialized}"));
         }
 
         
