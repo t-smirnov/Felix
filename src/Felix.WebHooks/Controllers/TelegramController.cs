@@ -17,18 +17,23 @@ namespace Felix.WebHooks.Controllers
 
         public TelegramController(ILogger logger)
         {
-            _logger = logger;        
+            _logger = logger;
+        }
+
+        [HttpGet]
+        [Route(template:"get")]
+        public IHttpActionResult Get()
+        {
+            return Ok("Content");
         }
 
         [HttpPost]
         [Route("update")]
-        public async Task<IHttpActionResult> Post(Update update)
+        public async Task<IHttpActionResult> Post([FromBody]Update update)
         {
             var serialized = JsonConvert.SerializeObject(update);
             _logger.WriteInformation(serialized);
             return await Task.FromResult(Ok($"I got {serialized}"));
         }
-
-        
     }
 }

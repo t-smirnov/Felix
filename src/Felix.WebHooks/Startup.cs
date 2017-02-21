@@ -14,16 +14,18 @@ namespace Felix.WebHooks
         {
             var config = new HttpConfiguration();
             
-            config.MapHttpAttributeRoutes();
+         
             
             app.UseWebApi(config);
-            app.UseCors(CorsOptions.AllowAll);
             app.UseNLog();
             var container = new UnityContainer();
 
             container.RegisterInstance<ILogger>(app.GetLoggerFactory().Create("WebHooks"));
 
             config.DependencyResolver = new UnityDependencyResolver(container);
+
+            config.MapHttpAttributeRoutes();
+            config.EnsureInitialized();
         }
     }
 }
