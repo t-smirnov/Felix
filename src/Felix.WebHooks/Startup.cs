@@ -17,23 +17,36 @@ namespace Felix.WebHooks
         public void Configuration(IAppBuilder app)
         {
             var http = new HttpConfiguration();
+            var container = new UnityContainer();
+            var logger = new NLogFactory().Create("Startup");
 
-            var rabbitUri = ConfigurationManager.AppSettings["rabbit"];
-
-            var busControl = Bus.Factory.CreateUsingRabbitMq(host =>
+            try
             {
-                host.Host(new Uri(rabbitUri), config =>
+                
+                var rabbitUri = ConfigurationManager.AppSettings["rabbit"];
+                logger.WriteInformation($"## Trying to resolve rabbit at {rabbitUri}");
+
+                var busControl = Bus.Factory.CreateUsingRabbitMq(host =>
                 {
-                    config.Username("guest");
-                    config.Password("guest");
+                    host.Host(new Uri(rabbitUri), config =>
+                    {
+                        config.Username("guest");
+                        config.Password("guest");
+                    });
                 });
-            });
+                container.RegisterInstance(busControl);
+            }
+            catch (Exception e)
+            {
+                logger.WriteError(e.Message);
+            }
+
+
             app.UseWebApi(http);
             app.UseNLog();
-            var container = new UnityContainer();
 
             container.RegisterInstance(app.GetLoggerFactory().Create("WebHooks"));
-            container.RegisterInstance(busControl);
+
 
 
             container.RegisterType<IBusControl>();

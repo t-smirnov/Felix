@@ -11,8 +11,25 @@ namespace Felix.Settings
     {
         static void Main(string[] args)
         {
-            var apikey = ConfigurationManager.AppSettings["ApiKey"];
-            var bot = new Telegram.Bot.Api(apikey);
+            Console.WriteLine("# Welcome to bot settings");
+            Console.Write("# Please provider your token (or press enter): ");
+            var token = Console.ReadLine();
+            if (string.IsNullOrEmpty(token))
+            {
+                token = ConfigurationManager.AppSettings["token"];
+                Console.WriteLine($"# Token from config file: {token}");
+            }
+            var bot = new Telegram.Bot.TelegramBotClient(token);
+            var task = bot.GetMeAsync();
+            task.Wait();
+            if (task.IsCompleted)
+            {
+                var user = task.Result;
+                Console.WriteLine($"{user.FirstName} {user.LastName} is greeting you here!");
+            }
+
+
+            
         }
     }
 }

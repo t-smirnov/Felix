@@ -21,14 +21,13 @@ namespace Felix.WebHooks.Controllers
         public WebHooks(ILogger logger, IBusControl bus)
         {
             if (logger == null) throw new ArgumentNullException(nameof(logger));
-            if (string.IsNullOrEmpty(bus?.Address.AbsoluteUri)) throw new ArgumentNullException(nameof(bus));
 
             _bus = bus;
             _logger = logger;
         }
 
         [HttpGet]
-        [Route("")]
+        [Route("version")]
         public async Task<IHttpActionResult> Get()
         {
             var busAddress = _bus.Address.AbsoluteUri;
@@ -63,7 +62,7 @@ namespace Felix.WebHooks.Controllers
 
             try
             {
-                await _bus.Publish(update);
+                await _bus?.Publish(update);
 
                 return Ok();
             }
