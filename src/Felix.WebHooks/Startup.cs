@@ -17,6 +17,7 @@ namespace Felix.WebHooks
         public void Configuration(IAppBuilder app)
         {
             var http = new HttpConfiguration();
+            
             var container = new UnityContainer();
             var logger = new NLogFactory().Create("Startup");
 

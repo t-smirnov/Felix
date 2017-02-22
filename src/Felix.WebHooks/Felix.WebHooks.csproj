@@ -188,8 +188,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\WebHooks.cs" />
+    <Compile Include="Controllers\WebHooksController.cs" />
     <Compile Include="Extensions\AppBuilderExtensions.cs" />
+    <Compile Include="Filters\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
