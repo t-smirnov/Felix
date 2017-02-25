@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Telegram.Bot.Types;
 
 namespace Felix.Settings
 {
@@ -28,8 +30,29 @@ namespace Felix.Settings
                 Console.WriteLine($"{user.FirstName} {user.LastName} is greeting you here!");
             }
 
+            try
+            {
+                var stream = new FileStream("C:\\Users\\tsmirnov\\ssl\\felix.pfx", FileMode.Open);
+                
+                var cert = new FileToSend()
+                {
+                    Content = stream,
+                    Filename = "felix"           
+                };
+                bot.SetWebhookAsync("https://cloundwin.westeurope.cloudapp.azure.com/api/webhooks/update", cert).Wait();
+                bot.StartReceiving();
 
-            
+                var message = new Message()
+                {
+
+                };
+
+
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
     }
 }

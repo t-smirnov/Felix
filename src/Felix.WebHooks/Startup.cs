@@ -9,6 +9,7 @@ using NLog.Internal;
 using NLog.Owin.Logging;
 using Unity.WebApi;
 using ConfigurationManager = System.Configuration.ConfigurationManager;
+using Felix.WebHooks.Extensions;
 
 namespace Felix.WebHooks
 {
@@ -17,40 +18,29 @@ namespace Felix.WebHooks
         public void Configuration(IAppBuilder app)
         {
             var http = new HttpConfiguration();
-            
+
             var container = new UnityContainer();
             var logger = new NLogFactory().Create("Startup");
 
-            try
-            {
-                
-                var rabbitUri = ConfigurationManager.AppSettings["rabbit"];
-                logger.WriteInformation($"## Trying to resolve rabbit at {rabbitUri}");
-
-                var busControl = Bus.Factory.CreateUsingRabbitMq(host =>
-                {
-                    host.Host(new Uri(rabbitUri), config =>
-                    {
-                        config.Username("guest");
-                        config.Password("guest");
-                    });
-                });
-                container.RegisterInstance(busControl);
-            }
-            catch (Exception e)
-            {
-                logger.WriteError(e.Message);
-            }
-
+            var rabbitUri = ConfigurationManager.AppSettings["rabbit"];
+            logger.WriteInformation($"## Trying to resolve rabbit at {rabbitUri}");
 
             app.UseWebApi(http);
             app.UseNLog();
 
             container.RegisterInstance(app.GetLoggerFactory().Create("WebHooks"));
 
+#if RElEASE
+            app.UseMassTransit("rabbitmq://cloundwin.westeurope.cloudapp.azure.com:5672");
+#endif
+#if DEBUG
+            app.UseMassTransit("rabbitmq://localhost:5672", container);
+
+#endif
 
 
-            container.RegisterType<IBusControl>();
+
+
 
             http.DependencyResolver = new UnityDependencyResolver(container);
 

@@ -10,15 +10,17 @@ using Telegram.Bot.Types;
 
 namespace Felix.WebHooks.Controllers
 {
-    [RoutePrefix("api/webhoooks")]
+    [RoutePrefix("api/webhooks")]
     public class WebHooksController : ApiController
     {
+        private IBusControl _bus;
         private readonly ILogger _logger;
 
-        public WebHooksController(ILogger logger)
+        public WebHooksController(ILogger logger, IBusControl bus)
         {
             if (logger == null) throw new ArgumentNullException(nameof(logger));
 
+            _bus = bus;
             _logger = logger;
         }
 
@@ -52,10 +54,11 @@ namespace Felix.WebHooks.Controllers
         [Route("update")]
         public async Task<IHttpActionResult> Post([FromBody]Update update)
         {
-            _logger.WriteInformation($"ID:{update.Message.MessageId}{Environment.NewLine}Text:{update.Message.Text}");
+            _logger.WriteInformation($"ID:{update.Message?.MessageId}{Environment.NewLine}Text:{update.Message?.Text}");
 
             try
             {
+                await _bus.Publish(update);
 
                 return Ok();
             }

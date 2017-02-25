@@ -22,7 +22,8 @@ namespace Felix.WebHooks.Filters
 
         public override Task OnActionExecutingAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
         {
-
+            var request = actionContext.Request.ToString();
+            _logger.WriteInformation(request);
             return base.OnActionExecutingAsync(actionContext, cancellationToken);
         }
     }
