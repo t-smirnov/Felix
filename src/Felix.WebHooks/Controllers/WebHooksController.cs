@@ -58,7 +58,10 @@ namespace Felix.WebHooks.Controllers
 
             try
             {
-                await _bus.Publish(update);
+                if(_bus != null)
+                {
+                    await _bus.Publish(update);
+                }
 
                 return Ok();
             }

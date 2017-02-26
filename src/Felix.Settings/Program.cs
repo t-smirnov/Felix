@@ -21,8 +21,8 @@ namespace Felix.Settings
                 token = ConfigurationManager.AppSettings["token"];
                 Console.WriteLine($"# Token from config file: {token}");
             }
-            var bot = new Telegram.Bot.TelegramBotClient(token);
-            var task = bot.GetMeAsync();
+            var client = new Telegram.Bot.TelegramBotClient(token);
+            var task = client.GetMeAsync();
             task.Wait();
             if (task.IsCompleted)
             {
@@ -32,16 +32,16 @@ namespace Felix.Settings
 
             try
             {
-                var stream = new FileStream("C:\\Users\\tsmirnov\\ssl\\felix.pfx", FileMode.Open);
+                var stream = new FileStream("C:\\Users\\tsmirnov\\ssl\\fpublic.pem", FileMode.Open);
                 
                 var cert = new FileToSend()
                 {
                     Content = stream,
                     Filename = "felix"           
                 };
-                bot.SetWebhookAsync("https://cloundwin.westeurope.cloudapp.azure.com/api/webhooks/update", cert).Wait();
-                bot.StartReceiving();
-
+                client.SetWebhookAsync("https://cloundwin.westeurope.cloudapp.azure.com/api/webhooks/update", cert).Wait();
+                client.StartReceiving();
+                
                 var message = new Message()
                 {
 
