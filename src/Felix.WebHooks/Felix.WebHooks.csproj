@@ -171,8 +171,7 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\PublishProfiles\test.pubxml" />
-    <None Include="Properties\PublishProfiles\WebHooks LocalIIS.pubxml" />
+    <None Include="Properties\PublishProfiles\FelixWebHooks - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

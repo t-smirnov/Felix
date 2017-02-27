@@ -34,14 +34,9 @@ namespace Felix.WebHooks
             app.UseMassTransit("rabbitmq://cloundwin.westeurope.cloudapp.azure.com:5672");
 #endif
 #if DEBUG
-            app.UseMassTransit("rabbitmq://localhost:5672", container);
+            app.UseMassTransit("rabbitmq://cloundwin.westeurope.cloudapp.azure.com:5672", container);
 
 #endif
-
-
-
-
-
             http.DependencyResolver = new UnityDependencyResolver(container);
 
             http.MapHttpAttributeRoutes();
