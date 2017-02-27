@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Felix.Neuro.Tests", "Felix.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Felix.Settings", "Felix.Settings\Felix.Settings.csproj", "{5EEA8BEF-811B-4177-8031-6A33BEE4FCFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Felix", "Felix\Felix.csproj", "{A7CCE1FD-97EA-44BE-8831-C0F4E6AA18B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5EEA8BEF-811B-4177-8031-6A33BEE4FCFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EEA8BEF-811B-4177-8031-6A33BEE4FCFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EEA8BEF-811B-4177-8031-6A33BEE4FCFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7CCE1FD-97EA-44BE-8831-C0F4E6AA18B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7CCE1FD-97EA-44BE-8831-C0F4E6AA18B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7CCE1FD-97EA-44BE-8831-C0F4E6AA18B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7CCE1FD-97EA-44BE-8831-C0F4E6AA18B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

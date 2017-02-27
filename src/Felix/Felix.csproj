@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{51E9B67E-981E-464B-9B0C-DB6117D9A385}</ProjectGuid>
+    <ProjectGuid>{A7CCE1FD-97EA-44BE-8831-C0F4E6AA18B9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Felix.Core</RootNamespace>
-    <AssemblyName>Felix.Core</AssemblyName>
+    <RootNamespace>Felix</RootNamespace>
+    <AssemblyName>Felix</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AlchemyAPIClient, Version=1.4.0.0, Culture=neutral, PublicKeyToken=2e85acc812ed0c7b, processorArchitecture=MSIL">
+      <HintPath>..\packages\AlchemyAPIClient.1.5.1608.252\lib\net45\AlchemyAPIClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,10 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IBot.cs" />
-    <Compile Include="Models\Intent.cs" />
-    <Compile Include="Models\Message.cs" />
+    <Compile Include="GenerativeBot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Felix.Core\Felix.Core.csproj">
+      <Project>{51E9B67E-981E-464B-9B0C-DB6117D9A385}</Project>
+      <Name>Felix.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
